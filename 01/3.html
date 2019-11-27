@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 95%;
+			background-color: #ececec;
+			padding: 20px;
+			border: dotted 1px;
+			color: #b58004;
+			word-wrap:break-word;
+		}
+		button{
+			margin: 20px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="monthDiv"></div>
+	<button id="delFirst">删除January(1)</button>
+	<button id="delLast">删除December(12)</button>
+
+	<div id="copyDiv"></div>
+	<button id="copy">复制</button>
+	<button id="reduction">还原</button>
+
+	<div id="colorDiv"></div>
+	<button id="reduction1">还原</button>
+	<button id="del1">删除前三项</button>
+	<button id='del2'>删除第二至第三项</button>
+	<button id="insert">在第二项后插入(orange,purple)</button>
+	<button id="replace">替换第二项和第三项</button>
+
+	<script>
+		var month = ['January(1)','February(2)','March(3)','April(4)','May(5)','June(6)','July(7)','Aguest(8)','September(9)','October(10)','November(11)','December(12)']
+
+		var x =  document.getElementById('monthDiv');
+		x.innerHTML = month.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+
+		var delLast = document.getElementById('delLast');
+		var delFirst = document.getElementById('delFirst');
+
+		delFirst.onclick = function(){
+			if (this.innerHTML == '删除January(1)') {
+				month.shift();
+				x.innerHTML = month.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+				delFirst.innerHTML = '添加January(1)'
+			} else {
+				month.unshift("January(1)");
+				x.innerHTML = month.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+				delFirst.innerHTML = '删除January(1)'
+			}
+
+		}
+		delLast.onclick = function(){
+			var s  =  delLast.innerHTML;
+			console.log(s)
+
+			if (this.innerHTML == '删除December(12)') {
+				month.pop();
+				x.innerHTML = month.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+				delLast.innerHTML = '添加December(12)';
+			} else {
+				month.push('December(12)')
+				x.innerHTML = month.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+				delLast.innerHTML = '删除December(12)';
+			}
+		}
+
+////////////////////////////////////////////////////////////////
+		var number = [0,1,2,3,4,5,6,7,8,9];
+		var c =  document.getElementById('copyDiv');
+		c.innerHTML = number.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		var copy = document.getElementById("copy");
+		var reduction = document.getElementById("reduction");
+		copy.onclick = function(){
+			 number = number.concat(number);
+			 // console.log(number.concat(number))
+			 c.innerHTML = number.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		}
+		reduction.onclick = function(){
+			 number = number.slice(0,10)
+			 c.innerHTML = number.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		}
+
+
+////////////////////////////////////////////////////////////////////////
+
+		var color = ['red','green','blue','white','yellow','black','brown']
+		var f = document.getElementById('colorDiv');
+		f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+
+		var reduction1 =  document.getElementById('reduction1');
+		var del1 = document.getElementById('del1');
+		var del2 = document.getElementById('del2');
+		var insert = document.getElementById('insert');
+		var replace = document.getElementById('replace')
+
+
+
+		reduction1.onclick = function(){
+			color = ['red','green','blue','white','yellow','black','brown']
+			f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		}
+
+		del1.onclick = function(){
+			color.splice(0,3);
+			f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+			console.log(color)
+		}
+
+		del2.onclick = function(){
+			color.splice(1,2);
+			f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+			console.log(color)
+		}
+
+		insert.onclick = function(){
+			color.splice(2, 0, "orange", "purple")
+			f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		}
+		
+		replace.onclick = function(){
+			color[1] = 'XX';
+			color[2] = 'XXX';
+			f.innerHTML = color.join("&nbsp;&nbsp;,&nbsp;&nbsp;");
+		}
+
+	</script>
+</body>
+</html>

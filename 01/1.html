@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none;
+			text-align: center;
+
+		}
+		.box{
+			width: 100%;
+			height: 500px;
+			border: solid 1px;
+		}
+		ul{
+			width: 100%;
+			height: 40px;
+			border-bottom: solid 1px;
+		}
+
+		li{
+			width: 150px;
+			height: 40px;
+			border-right: solid 1px;
+			float: left;
+			line-height: 40px;
+		}
+
+
+		.bgred{
+			background-color: red;
+		}
+		.box>div{
+			width: 100%;
+			height: 100%;
+			/*border: solid 1px;*/
+		
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li class="bgred">Apple</li>
+			<li>Banner</li>
+			<li>Orange</li>
+			<li>XiGua</li>
+			<li>TaoZi</li>
+			<li>SomeThingElse</li>
+		</ul>
+
+		<div style="display: block;">Apple AppleAppleAppleAppleAppleAppleAppleApple</div>
+		<div>BannerBannerBannerBannerBannerBannerBannerBanner</div>
+		<div>OrangeOrangeOrangeOrangeOrangeOrangeOrangeOrange</div>
+		<div>XiGuaXiGuaXiGuaXiGuaXiGuaXiGuaXiGuaXiGuaXiGuaXiGua</div>
+		<div>TaoZiTaoZiTaoZiTaoZiTaoZiTaoZiTaoZiTaoZiTaoZiTaoZiTaoZi</div>
+		<div>SomeThingElseSomeThingElseSomeThingElseSomeThingElseSomeThingElse</div>
+	</div>
+
+	<script>
+		var oli = document.querySelectorAll('li');
+		var odiv = document.getElementsByClassName('box')[0].querySelectorAll('div');
+		// console.log(odiv);
+
+		for (var i = 0; i < oli.length; i++) {
+			oli[i].index =i;
+			
+			oli[i].onmouseover = function(){
+				for (var j = 0; j < oli.length; j++) {
+					oli[j].style.backgroundColor = '#fff';
+				 	odiv[j].style.display = 'none'	
+					this.style.backgroundColor = 'red';
+					// console.log(this)
+					
+				}
+				console.log(this.index)
+				odiv[this.index].style.display='block'
+			}
+			
+				 // console.log(i)
+				// console.log(j)
+		}
+
+
+	</script>
+</body>
+</html>
